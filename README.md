@@ -2,9 +2,9 @@
 My PHP Projects
 
 Login Form Project Files:
-loginform.css
-header.html 
-loginform.php
+loginform.css,
+header.html,
+loginform.php,
 footer.html
 
 For the login form project: 
@@ -14,7 +14,7 @@ and checks with that the saved password matches
 the encrypted blowfish algorithm password.
 
 Calculator Project Files:
-calculator.css
+calculator.css,
 calculator.php
 
 For Calculator project:
