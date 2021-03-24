@@ -25,12 +25,6 @@ multiplies two numbers.
 Movie Theatre Project Files:
 movietheatre.php
 
-For Movie theatre project: 
-I made a movie theatre backend 
-project that uses classes to save
-film details and shows the user the 
-genre of movies that they select.
-
 Madlibs File: 
 Madlibs.php 
 
