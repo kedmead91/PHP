@@ -17,9 +17,9 @@ Step 2: To save the username and password to an external text
 file using fopen, fwrite and fclose. 
 
 Step 3: Use an algorithm to encrpyt the users saved password to php, then 
-if the users password entered into the form matched it, it then saved the users
-username, password, the encryption and added another line to confirm that the
-passwords matched. 
+if the users password entered into the form matches it, it then saves the users
+username, password and the encryption key. After this it then adds another line to confirm 
+that the passwords match. 
 
 Challenges: 
 I had issues with my if statements because they weren't working
