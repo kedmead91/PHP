@@ -32,7 +32,7 @@
     <br><br>
     <?php
     //variables for username and password
-
+    //submits data
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -51,12 +51,10 @@
 
 
     } else {
-        // checks that the users password matches encryption algorithm & submits form
-        $my_password = "Houses45";
-        //echo "Plain password: ". $my_password;
-        //echo "<br />";
+        // encrypts users chosen password using blow fish algorithm
+        $my_password = $password;
         $hashed_password = password_hash($my_password,PASSWORD_BCRYPT);
-
+        //checks users password matches encrypted password and writes to external file if correct
         if (password_verify($password, $hashed_password)){
             echo "Login accepted";
             $file_handling =fopen('login.txt', 'a+');
