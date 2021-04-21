@@ -36,43 +36,28 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    //check username length
+    //checks password length and if password has a number
+      if (preg_match('/[A_Za-z]/', $password) &&preg_match('#[0-9]+#', $password)){
+      echo "<div id='accepted'> Thank you, Login accepted! </div>";
+       if (!strlen($password)<5){
+       // encrypts users chosen password using blow fish algorithm
+       // writes username, password and encrypted password to file
+     $hashed_password = password_hash($password,PASSWORD_BCRYPT);
+     $login =fopen('login.txt', 'a+');
+     file_put_contents('login.txt', "Your username is: $username \nYour password is: $password \nEncrypted with the Blowfish Algorithm: $hashed_password \n");
+}
+}
+     //checks users password matches encrypted password and writes to external file if correct
 
-    if (strlen($username)<5) {
-        echo "Error Username too short";
-    } elseif (strlen($password) <5) {
-        //check password length
-        echo "Error Password too short";
+     if (password_verify($password, $hashed_password)){
+      fwrite($login, "Plain Text and Encrypted Password Matches");
+      fclose($login);
 
-        //check if password has a number
-    } elseif (!preg_match("#[0-9]+#", $password)) {
-        echo "No number in Password";
-        //check if password has a number
-
-
-    } else {
-        // encrypts users chosen password using blow fish algorithm
-        $my_password = $password;
-        $hashed_password = password_hash($my_password,PASSWORD_BCRYPT);
-        //checks users password matches encrypted password and writes to external file if correct
-        if (password_verify($password, $hashed_password)){
-            echo "Login accepted";
-            $file_handling =fopen('login.txt', 'a+');
-            fwrite($file_handling, 'Your Login Name is: ' . $username);
-            fwrite($file_handling, "\n");
-            fwrite($file_handling, 'Your Password is: ' . $password . ' ');
-            fwrite($file_handling, "\n");
-            fwrite($file_handling, 'With the Blowfish Algorithm ' . $hashed_password);
-            fwrite($file_handling, "\n");
-            fwrite($file_handling, 'Password Matches Encryption');
-            fclose($file_handling);
-        } else {
-            echo "Login Invalid";
-        }
-    }
+      // Error message if invalid password is put in
+     }else{
+        echo "<div id='error'> Error, Password Too Short Or Missing a Number</div>";
+      }
     ?>
-
-
 </div>
 <!--footer of page-->
 <?php include "footer.html"?>
